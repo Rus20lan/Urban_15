@@ -19,8 +19,16 @@ export interface IPost extends IArticle {
   id: number;
   like: boolean;
 }
+export interface IEasyPost {
+  author:string;
+  source:ISource;
+  description: string;
+  urlToImage: string;
+  title: string;
 
+}
 export interface ISource {
   id: string | null;
   name: string;
+
 }

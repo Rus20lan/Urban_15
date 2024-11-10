@@ -1,9 +1,17 @@
-import React from 'react';
+
 import styled from 'styled-components';
 import NavigationBtns from '../NavigationBtns/NavigationBtns';
 import { useResize } from '../../hooks/useResize';
 
-interface Props {}
+
+interface Props {
+  onNextPageClick: () => void;
+  onPrevPageClick: () => void;
+  disable: {
+    left: boolean;
+    right: boolean;
+  };
+}
 
 const HeaderContainer = styled.div`
   width: 84%;
@@ -22,8 +30,8 @@ const HeaderTitle = styled.h1`
 `;
 
 function Header(props: Props) {
-  const {} = props;
-  const { width, isMobile } = useResize();
+  const {onNextPageClick, onPrevPageClick, disable } = props;
+  const { isMobile } = useResize();
   return (
     <HeaderContainer
       style={
@@ -39,7 +47,7 @@ function Header(props: Props) {
       <HeaderTitle style={isMobile ? { fontSize: '2.8em' } : {}}>
         Review of posts
       </HeaderTitle>
-      <NavigationBtns />
+      <NavigationBtns onNextPageClick={onNextPageClick} onPrevPageClick={onPrevPageClick} disable={disable}/>
     </HeaderContainer>
   );
 }

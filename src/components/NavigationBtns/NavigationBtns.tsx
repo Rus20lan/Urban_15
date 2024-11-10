@@ -1,6 +1,9 @@
 import styled from 'styled-components';
+import style from './navBtns.module.css';
 import lArrow from '../../images/icons/leftArrow.svg';
 import rArrow from '../../images/icons/rightArrow.svg';
+import { FC } from 'react';
+import React from 'react';
 const NavBtnsContainer = styled.div`
   border-radius: 100px;
   padding: 10px;
@@ -20,36 +23,31 @@ const NavBtnsContainer = styled.div`
   }
 `;
 
-const Arrow = styled.a`
-  border-radius: 100px;
-  width: 62px;
-  height: 62px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  flex: 0 0 auto;
-  background: var(--m3-sys-light-primary);
 
-  &:hover {
-    background: var(--purple-60);
+type PaginationProps = {
+  onNextPageClick: () => void;
+  onPrevPageClick: () => void;
+  disable: {
+    left: boolean;
+    right: boolean;
+  };
+};
+
+const NavigationBtns:FC<PaginationProps> = ({onNextPageClick, onPrevPageClick, disable}) => {
+
+  const handleNextPageClick = () =>{
+    onNextPageClick();
+  }
+  const handlePrevPageClick = () =>{
+    onPrevPageClick();
   }
 
-  &:active {
-    transform: scale(0.98);
-    background: var(--purple-70);
-  }
-
-  @media (max-width: 1440px) {
-    width: 48px;
-    height: 48px;
-  }
-`;
-
-const NavigationBtns = () => {
   return (
     <NavBtnsContainer>
-      <Arrow>
+      <button className={style.arrow} disabled={disable.left} onClick={handlePrevPageClick}><img src={lArrow} alt='left arrow'></img></button>
+      <button className={style.arrow} disabled={disable.right} onClick={handleNextPageClick}><img src={rArrow} alt='right arrow'></img></button>
+      {/* <Arrow onClick={handlePrevPageClick}
+        disabled={disable.left}>
         <img
           src={lArrow}
           alt="left arrow"
@@ -58,8 +56,8 @@ const NavigationBtns = () => {
             height: '17px',
           }}
         ></img>
-      </Arrow>
-      <Arrow>
+      </Arrow> */}
+      {/* <Arrow>
         <img
           src={rArrow}
           alt="right arrow"
@@ -68,9 +66,9 @@ const NavigationBtns = () => {
             height: '17px',
           }}
         ></img>
-      </Arrow>
+      </Arrow> */}
     </NavBtnsContainer>
   );
 };
 
-export default NavigationBtns;
+export default React.memo(NavigationBtns) ;

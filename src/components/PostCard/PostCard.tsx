@@ -7,9 +7,9 @@ import { getFirstLetter, updateStringByNum } from '../../modules/modules';
 import { useResize } from '../../hooks/useResize';
 import { AppDispatch } from '../../redux/store';
 import { useDispatch } from 'react-redux';
-import { addLikePost, deletePost } from '../../redux/actionCreator';
+import { addLikePost, deletePost, isModalOpen, setEditPostID } from '../../redux/actionCreator';
 
-// background: var(--m3-sys-light-background);
+
 const CardContainer = styled.div`
   border: 1px solid #e0e0e0;
   border-radius: 12px;
@@ -77,14 +77,16 @@ const CardInfo = styled.div`
 `;
 const CardTitle = styled.h3`
   margin: 0;
-  font-size: 18px;
+  font-family: var(--font-roboto-r);
+  font-size: 1rem;
   @media (max-width: 1440px) {
     overflow: scroll;
     height: 50px;
   }
 `;
 export const CardText = styled.p`
-  font-size: 14px;
+  font-family: var(--font-roboto-r);
+  font-size: 0.88rem;
   color: #555;
   @media (max-width: 1440px) {
     height: 60px;
@@ -140,8 +142,6 @@ const MenuItem = styled.li`
   }
 `;
 
-// author, content, description, publishedAt, source, title,url,urlToImage
-
 function PostCard(props: IPost) {
   const [isOpen, setIsOpen] = useState(false);
   const { isDesktop, isLaptop } = useResize();
@@ -166,6 +166,11 @@ function PostCard(props: IPost) {
     setIsOpen(!isOpen);
   };
 
+  const handleClickEdit = (id:number) =>{
+    dispatch(setEditPostID(id));
+    dispatch(isModalOpen());
+
+  }
   const handleClickDel = (id: number) => {
     dispatch(deletePost(id));
   };
@@ -234,7 +239,9 @@ function PostCard(props: IPost) {
             {isOpen ? (
               <MenuList>
                 <MenuItem>
-                  <AvaLеtter>Edit</AvaLеtter>
+                  <AvaLеtter data-ed onClick={()=>{
+                    handleClickEdit(id);
+                  }}>Edit</AvaLеtter>
                 </MenuItem>
                 <MenuItem>
                   <AvaLеtter

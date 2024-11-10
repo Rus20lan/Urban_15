@@ -6,6 +6,9 @@ export enum ActionType {
   CREATE_POSTS_BY_ARTICLE = 'CREATE_POSTS_BY_ARTICLE',
   ADD_FAVOURITES_POST = 'ADD_FAVOURITES_POST',
   DELETE_POST = 'DELETE_POST',
+  SET_EDIT_POST_ID = 'EDIT_POST_ID',
+  IS_MODAL_OPEN = 'IS_MODAL_OPEN',
+  UPDATE_POST = 'UPDATE_POST'
 }
 
 // Типы для actions
@@ -32,9 +35,23 @@ interface actionLikePost {
   payload: number;
 }
 
+interface actionSetEditPostID{
+  type:ActionType.SET_EDIT_POST_ID;
+  payload:number;
+}
+
+interface actionModal{
+  type: ActionType.IS_MODAL_OPEN;
+}
+
+interface actionUpdatePost{
+  type:ActionType.UPDATE_POST;
+  payload:IPost;
+}
+
 export type Action =
   | actionPending
   | actionSuccess
   | actionCreatePosts
   | actionDeletePost
-  | actionLikePost;
+  | actionLikePost | actionSetEditPostID | actionModal | actionUpdatePost;

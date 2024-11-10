@@ -1,6 +1,9 @@
 @import url('https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css');
+@import url('./fonts/fonts.css');
 :root {
   --font-roboto-r: 'Roboto Regular';
+  --font-manrope-m: 'Manrope Medium';
+  --font-manrope-sb: 'Manrope SemiBold';
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -25,6 +28,7 @@
   --like-post: #efb8c8;
 
   --m3-sys-light-inverse-primary: #d0bcff;
+  --m3-sys-dark-outline: #938f99;
 
   ::-webkit-scrollbar {
     display: none;

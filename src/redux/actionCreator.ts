@@ -40,3 +40,21 @@ export const addLikePost = (id: number) => {
     dispatch({ type: ActionType.ADD_FAVOURITES_POST, payload: id });
   };
 };
+
+export const setEditPostID = (id:number) =>{
+  return (dispatch:Dispatch<Action>) =>{
+    dispatch({type:ActionType.SET_EDIT_POST_ID, payload:id});
+  }
+}
+
+export const isModalOpen = () =>{
+  return (dispatch:Dispatch<Action>) =>{
+    dispatch({type:ActionType.IS_MODAL_OPEN});
+  }
+}
+
+export const updatePost = (post:IPost) =>{
+  return (dispatch:Dispatch<Action>) =>{
+    dispatch({type:ActionType.UPDATE_POST,payload:post});
+  }
+}

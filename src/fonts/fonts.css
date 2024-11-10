@@ -1,4 +1,14 @@
 @font-face {
   font-family: 'Roboto Regular';
-  src: url(./Roboto-Regular.ttf);
+  font-weight: 700;
+  src: url('./Roboto-Regular.woff') format("woff");
+}
+@font-face {
+  font-family: 'Manrope Medium';
+  font-weight: 700;
+  src: url('./Manrope-Medium.ttf');
+}
+@font-face {
+  font-family: 'Manrope SemiBold';
+  src: url(./Manrope-SemiBold.ttf);
 }

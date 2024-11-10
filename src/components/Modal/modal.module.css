@@ -1,0 +1,68 @@
+.modalBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap:20px;
+}
+
+.modalFieldsWrapper{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+}
+
+.fieldName{
+    margin-bottom: 5px;
+    font-family: var(--font-roboto-r);
+    font-size: 1rem;
+}
+
+.modalTextArea{
+    resize: none;
+    font-family: var(--font-roboto-r);
+    font-size: 0.88rem;
+}
+
+
+.modalBtnsWrapper{
+    display: flex;
+    justify-content: flex-end;
+    gap: 10%;
+}
+.modalBtn{
+    padding: 10px auto;
+    background: var(--m3-sys-light-inverse-primary);
+    border: 1px solid var(--m3-sys-dark-outline);
+}
+.modalBtnSpan{
+    font-family: var(--font-roboto-r);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--m3-white);
+
+}
+
+.increaseAuto{
+    resize: vertical;
+    height: 50px;
+    overflow-y: auto;
+
+}
+
+@media (max-width: 1024px) {
+    .modalBody{
+        gap:10px;
+    }
+    .fieldName{
+        font-size: 0.88rem;
+    }
+    .modalTextArea{
+        font-size: 0.8rem;
+    }
+
+    .modalBtnSpan{
+        font-weight: 400;
+        letter-spacing: 0.01em;   
+    }
+}

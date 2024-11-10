@@ -37,7 +37,17 @@ export const postsReducer = (
           return post;
         })!,
       };
-    default:
-      return state;
+      case ActionType.UPDATE_POST:
+        return{
+          ...state,
+          posts: state.posts?.map((post:IPost)=>{
+            if(post.id === action.payload.id){             
+              post = action.payload;
+            }
+            return post;
+          })!
+        }
+      default:
+        return state;
   }
 };
