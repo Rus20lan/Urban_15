@@ -37,7 +37,7 @@ const Footer = () => {
     <FooterContainer>
       <FooterInfo>Posts uploaded </FooterInfo>
       <FooterWrapperInfo>
-        <FooterSpanCount>{posts?.length}</FooterSpanCount>
+        <FooterSpanCount>{posts ? posts.length : 0}</FooterSpanCount>
       </FooterWrapperInfo>
     </FooterContainer>
   );

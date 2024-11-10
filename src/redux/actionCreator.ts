@@ -10,12 +10,26 @@ export const getData = () => {
       type: ActionType.GET_DATA_PENDING,
     });
 
-    const data = await getPosts();
-
-    dispatch({
-      type: ActionType.GET_DATA_SUCCESS,
-      payload: data,
-    });
+    try {
+      const data = await getPosts();
+      dispatch({
+        type: ActionType.GET_DATA_SUCCESS,
+        payload: data,
+      });
+    } catch (err) {
+      const e: Error | string = err as Error | string;
+      if (e instanceof Error) {
+        dispatch({
+          type: ActionType.GET_DATA_FAIL,
+          payload: e.message,
+        });
+      } else if (typeof e === 'string') {
+        dispatch({
+          type: ActionType.GET_DATA_FAIL,
+          payload: e.toUpperCase(),
+        });
+      }
+    }
   };
 };
 
@@ -41,20 +55,20 @@ export const addLikePost = (id: number) => {
   };
 };
 
-export const setEditPostID = (id:number) =>{
-  return (dispatch:Dispatch<Action>) =>{
-    dispatch({type:ActionType.SET_EDIT_POST_ID, payload:id});
-  }
-}
+export const setEditPostID = (id: number) => {
+  return (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionType.SET_EDIT_POST_ID, payload: id });
+  };
+};
 
-export const isModalOpen = () =>{
-  return (dispatch:Dispatch<Action>) =>{
-    dispatch({type:ActionType.IS_MODAL_OPEN});
-  }
-}
+export const isModalOpen = () => {
+  return (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionType.IS_MODAL_OPEN });
+  };
+};
 
-export const updatePost = (post:IPost) =>{
-  return (dispatch:Dispatch<Action>) =>{
-    dispatch({type:ActionType.UPDATE_POST,payload:post});
-  }
-}
+export const updatePost = (post: IPost) => {
+  return (dispatch: Dispatch<Action>) => {
+    dispatch({ type: ActionType.UPDATE_POST, payload: post });
+  };
+};
