@@ -1,8 +1,6 @@
-
 import styled from 'styled-components';
 import NavigationBtns from '../NavigationBtns/NavigationBtns';
 import { useResize } from '../../hooks/useResize';
-
 
 interface Props {
   onNextPageClick: () => void;
@@ -27,10 +25,11 @@ const HeaderTitle = styled.h1`
   font-family: var(--font-roboto-r);
   font-size: 3.2em;
   line-height: 1.1;
+  color: #213547;
 `;
 
 function Header(props: Props) {
-  const {onNextPageClick, onPrevPageClick, disable } = props;
+  const { onNextPageClick, onPrevPageClick, disable } = props;
   const { isMobile } = useResize();
   return (
     <HeaderContainer
@@ -47,7 +46,11 @@ function Header(props: Props) {
       <HeaderTitle style={isMobile ? { fontSize: '2.8em' } : {}}>
         Review of posts
       </HeaderTitle>
-      <NavigationBtns onNextPageClick={onNextPageClick} onPrevPageClick={onPrevPageClick} disable={disable}/>
+      <NavigationBtns
+        onNextPageClick={onNextPageClick}
+        onPrevPageClick={onPrevPageClick}
+        disable={disable}
+      />
     </HeaderContainer>
   );
 }

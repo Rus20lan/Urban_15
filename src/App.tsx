@@ -35,7 +35,7 @@ function App() {
     const loadData = async () => {
       await dispatch(getData());
       if (error) dispatch(accessPostsList());
-      // dispatch(accessPostsList());
+      dispatch(accessPostsList());
     };
     loadData();
   }, []);

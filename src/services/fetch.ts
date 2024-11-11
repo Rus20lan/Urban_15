@@ -4,6 +4,7 @@ export const getPosts = async () => {
   const res = await fetch(
     `https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=${API_KEY}`
   );
+
   if (res.ok) {
     const data = await res.json();
     return data;

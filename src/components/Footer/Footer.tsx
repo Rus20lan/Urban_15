@@ -22,6 +22,7 @@ const FooterInfo = styled.h1`
   font-family: var(--font-roboto-r);
   font-weight: 700;
   font-size: 3.2em;
+  color: #213547;
 `;
 const FooterSpanCount = styled.span`
   font-family: var(--font-roboto-r);
